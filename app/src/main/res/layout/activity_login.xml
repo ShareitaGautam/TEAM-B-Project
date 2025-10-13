@@ -36,6 +36,8 @@
     <EditText
         android:id="@+id/emailEditText"
         android:hint="Email"
+        android:textColorHint="#E0E0E0"
+        android:textColor="#F5F5F5"
         android:inputType="textEmailAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -56,6 +58,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:hint="Password"
+        android:textColorHint="#E0E0E0"
+        android:textColor="#F5F5F5"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

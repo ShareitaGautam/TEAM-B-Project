@@ -105,6 +105,8 @@ class LoginActivity : AppCompatActivity() {
             }
     }
     // Allows users to create account to Dream Journal
+    // TODO: password must be at least 6 characters long to be accepted by Firebase, we need to
+    // add validation to our text input with a visual indicator before submitting our credentials
     private fun createAccount(email: String, password: String) {
         firebaseAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
