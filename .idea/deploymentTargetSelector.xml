@@ -4,6 +4,17 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
+<<<<<<< HEAD
+=======
+        <DropdownSelection timestamp="2025-10-13T02:58:19.946388Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\cutep\.android\avd\Medium_Phone.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
+>>>>>>> df080de (Login and Sign Up Changes with Firebase Config for Google Services)
       </SelectionState>
     </selectionStates>
   </component>

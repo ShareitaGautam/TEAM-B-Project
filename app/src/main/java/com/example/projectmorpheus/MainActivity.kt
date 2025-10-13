@@ -8,10 +8,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.projectmorpheus.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import android.content.Intent
+import android.view.MenuItem
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,7 +44,31 @@ class MainActivity : AppCompatActivity() {
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+
+        // ✅ Updated navigation listener to handle sign-out manually
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_sign_out -> {
+                    FirebaseAuth.getInstance().signOut()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> {
+                    val handled = try {
+                        findNavController(R.id.nav_host_fragment_content_main)
+                            .navigate(menuItem.itemId)
+                        true
+                    } catch (e: Exception) {
+                        false
+                    }
+                    binding.drawerLayout.closeDrawers()
+                    handled
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -54,5 +80,19 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_sign_out -> {
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

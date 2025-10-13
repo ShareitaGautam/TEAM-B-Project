@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
@@ -7,4 +8,9 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+=======
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="19" project-jdk-type="JavaSDK" />
+>>>>>>> df080de (Login and Sign Up Changes with Firebase Config for Google Services)
 </project>
