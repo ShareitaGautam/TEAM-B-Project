@@ -61,12 +61,12 @@
             android:alpha="0.5" />
     </FrameLayout>
 
-    <!-- Dismiss Button -->
+    <!-- Open Journal Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/dismiss_button"
         android:layout_width="0dp"
         android:layout_height="72dp"
-        android:text="Dismiss Alarm"
+        android:text="Open Journal"
         android:textSize="18sp"
         app:cornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -128,11 +128,10 @@ class AlarmDismissActivity : AppCompatActivity() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.cancel(AlarmReceiver.NOTIFICATION_ID)
 
-        // Navigate to main activity (which contains the journal fragment)
+        // Navigate to main activity and open journal entry
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            // TODO: In future, add extra to navigate directly to journal entry screen
-            // putExtra("NAVIGATE_TO_JOURNAL_ENTRY", true)
+            putExtra("OPEN_JOURNAL_ENTRY", true)
         }
         startActivity(intent)
         finish()

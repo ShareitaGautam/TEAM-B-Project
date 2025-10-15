@@ -43,10 +43,18 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_alarm
+                R.id.nav_home, R.id.nav_alarm, R.id.nav_journal, R.id.nav_gallery, R.id.nav_slideshow
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Handle journal entry navigation from alarm dismiss
+        if (intent.getBooleanExtra("OPEN_JOURNAL_ENTRY", false)) {
+            val bundle = Bundle().apply {
+                putBoolean("auto_open_entry", true)
+            }
+            navController.navigate(R.id.nav_journal, bundle)
+        }
 
         // ✅ Updated navigation listener to handle sign-out manually
         navView.setNavigationItemSelectedListener { menuItem ->
