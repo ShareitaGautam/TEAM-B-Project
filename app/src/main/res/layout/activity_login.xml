@@ -8,6 +8,8 @@
 
 
     <!-- Background Image -->
+
+    <!-- Main Title -->
     <ImageView
         android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
@@ -15,9 +17,56 @@
         android:scaleType="centerCrop"
         android:src="@drawable/loginbck"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="16dp" />
 
-    <!-- Main Title -->
+    <TextView
+        android:id="@+id/toggleSignUpTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:text="Don’t have an account? Sign Up"
+        android:textColor="#BB86FC"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailActionButton" />
+
+    <TextView
+        android:id="@+id/orDividerTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:text="OR"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailActionButton" />
+
+    <Button
+        android:id="@+id/googleSignInButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:color/white"
+        android:drawableStart="@drawable/googlelogo"
+        android:drawablePadding="12dp"
+        android:text="Sign in with Google"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/orDividerTextView" />
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="0dp"
@@ -79,55 +128,23 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordEditText" />
-
-    <!-- Sign Up/Log in button -->
     <TextView
-        android:id="@+id/toggleSignUpTextView"
+        android:id="@+id/errorTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="14sp"
         android:gravity="center"
-        android:text="Don’t have an account? Sign Up"
-        android:textColor="#BB86FC"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:text=""
+        app:layout_constraintTop_toBottomOf="@id/emailActionButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailActionButton" />
+        app:layout_constraintEnd_toEndOf="parent" />
+    <!-- Sign Up/Log in button -->
 
     <!-- Google Sign In Design -->
-    <TextView
-        android:id="@+id/orDividerTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="center"
-        android:text="OR"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailActionButton" />
 
-    <Button
-        android:id="@+id/googleSignInButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:background="@android:color/white"
-        android:drawableStart="@drawable/googlelogo"
-        android:drawablePadding="12dp"
-        android:text="Sign in with Google"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/orDividerTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
