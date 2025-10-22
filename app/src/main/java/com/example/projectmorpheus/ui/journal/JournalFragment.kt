@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.projectmorpheus.R
+import android.widget.Button
 import com.example.projectmorpheus.data.AlarmDatabase
 import com.example.projectmorpheus.data.JournalEntry
 import com.example.projectmorpheus.databinding.FragmentJournalBinding
@@ -83,16 +84,18 @@ class JournalFragment : Fragment() {
         val dialogView = layoutInflater.inflate(R.layout.dialog_journal_entry, null)
         val titleInput = dialogView.findViewById<EditText>(R.id.journal_title_input)
         val contentInput = dialogView.findViewById<EditText>(R.id.journal_content_input)
+        val btnDelete = dialogView.findViewById<Button>(R.id.btnDelete)
 
         // Pre-fill if editing
         entry?.let {
             titleInput.setText(it.title)
             contentInput.setText(it.content)
+            btnDelete.visibility = View.VISIBLE
         }
 
         val dialogTitle = if (entry == null) "New Journal Entry" else "Edit Journal Entry"
 
-        AlertDialog.Builder(requireContext())
+        val dialog = AlertDialog.Builder(requireContext())
             .setTitle(dialogTitle)
             .setView(dialogView)
             .setPositiveButton("Save") { _, _ ->
@@ -108,7 +111,15 @@ class JournalFragment : Fragment() {
                 }
             }
             .setNegativeButton("Cancel", null)
-            .show()
+            .create()
+
+        // Handle Delete button manually
+        btnDelete?.setOnClickListener {
+            entry?.let { showDeleteConfirmation(it) }
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun showDeleteConfirmation(entry: JournalEntry) {

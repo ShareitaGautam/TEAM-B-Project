@@ -5,26 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/alarm_list_view"
+    <!-- Main vertical layout: top actions row + content area -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp" />
+        android:orientation="vertical">
 
-    <!-- Empty state text -->
-    <TextView
-        android:id="@+id/empty_state_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="No alarms set.\nTap + to create one."
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textColor="?android:attr/textColorSecondary"
-        android:visibility="gone" />
+        <!-- Top row for the test button (no overlap with list) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp">
 
-    <!-- FAB for adding alarms -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTestCaptureDream"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="36dp"
+                android:text="TEST: CAPTURE DREAM"
+                android:textAllCaps="true" />
+        </LinearLayout>
+
+        <!-- Content area: ListView with empty state centered over it -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ListView
+                android:id="@+id/alarm_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp" />
+
+            <!-- Empty state text centered; toggled visible/gone in code -->
+            <TextView
+                android:id="@+id/empty_state_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="No alarms set.\nTap + to create one."
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorSecondary"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Add Alarm FAB, floating bottom-right -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_alarm_fab"
         android:layout_width="wrap_content"

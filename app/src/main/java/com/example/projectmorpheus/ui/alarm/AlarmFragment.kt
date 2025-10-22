@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.projectmorpheus.R
 import com.example.projectmorpheus.data.Alarm
 import com.example.projectmorpheus.data.AlarmDatabase
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -52,6 +53,7 @@ class AlarmFragment : Fragment() {
         listView = root.findViewById(R.id.alarm_list_view)
         emptyStateText = root.findViewById(R.id.empty_state_text)
         val fab = root.findViewById<FloatingActionButton>(R.id.add_alarm_fab)
+        val testButton = root.findViewById<MaterialButton>(R.id.btnTestCaptureDream)
 
         // Set up adapter
         adapter = AlarmListAdapter(
@@ -84,6 +86,14 @@ class AlarmFragment : Fragment() {
         // FAB click opens time picker
         fab.setOnClickListener {
             showTimePickerDialog()
+        }
+
+        // TEST button: open the compose screen (JournalActivity)
+        testButton.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), com.example.projectmorpheus.ui.journal.JournalActivity::class.java)
+                    .putExtra("ALARM_LABEL", "Dream — Test")
+            )
         }
 
         return root
@@ -132,7 +142,7 @@ class AlarmFragment : Fragment() {
                 val vibrate = vibrateSwitch.isChecked
 
                 // Create alarm
-                val alarm = Alarm(
+                val alarm = com.example.projectmorpheus.data.Alarm(
                     hourOfDay = hour,
                     minute = minute,
                     isEnabled = true,
