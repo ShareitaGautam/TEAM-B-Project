@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--https://stackoverflow.com/questions/21333866/how-to-create-a-circular-progressbar-in-android-which-rotates-on-it-->
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="270"
+    android:toDegrees="270">
+    <layer-list>
+        <item>
+            <shape
+                android:shape="ring"
+                android:innerRadiusRatio="2.5"
+                android:thickness="4dp"
+                android:useLevel="false">
+
+                <solid android:color="#CCC" />
+           </shape>
+        </item>
+
+        <item>
+            <shape
+                android:innerRadiusRatio="2.5"
+                android:shape="ring"
+                android:thickness="4dp"
+                android:useLevel="true"><!-- this line fixes the issue for lollipop api 21 -->
+
+                <gradient
+                    android:endColor="#007DD6"
+                    android:startColor="#007DD6"
+                    android:type="sweep"
+                    android:useLevel="false" />
+            </shape>
+        </item>
+    </layer-list>
+</rotate>
