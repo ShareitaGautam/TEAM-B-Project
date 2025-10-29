@@ -26,7 +26,6 @@ class JournalActivity : AppCompatActivity() {
         val btnSave = findViewById<Button>(R.id.btnSave)
         val btnCancel = findViewById<Button>(R.id.btnCancel)
 
-
         // make sure dialog_journal_entry.xml includes it
         val btnDelete = findViewById<Button?>(R.id.btnDelete)
 
